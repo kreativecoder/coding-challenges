@@ -11,9 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MHP.CodingChallenge.Backend.Dependency.Notifications\MHP.CodingChallenge.Backend.Dependency.Notifications.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
     <ProjectReference Include="..\MHP.CodingChallenge.Backend.Dependency.Inquiry\MHP.CodingChallenge.Backend.Dependency.Inquiry.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
