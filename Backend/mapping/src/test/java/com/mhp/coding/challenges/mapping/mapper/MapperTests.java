@@ -9,6 +9,7 @@ import com.mhp.coding.challenges.mapping.models.db.blocks.*;
 import com.mhp.coding.challenges.mapping.models.dto.ImageDto;
 import com.mhp.coding.challenges.mapping.models.dto.blocks.ArticleBlockDto;
 import com.mhp.coding.challenges.mapping.models.dto.blocks.GalleryBlockDto;
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,6 +108,21 @@ public class MapperTests {
         assertTrue(articleBlocks.get(3) instanceof com.mhp.coding.challenges.mapping.models.dto.blocks.ImageBlock);
         assertTrue(articleBlocks.get(4) instanceof com.mhp.coding.challenges.mapping.models.dto.blocks.TextBlock);
         assertTrue(articleBlocks.get(5) instanceof com.mhp.coding.challenges.mapping.models.dto.blocks.VideoBlock);
+    }
+
+    @Test
+    public void testNewArticleBlockImplementation() {
+        TweetBlock tweetBlock = new TweetBlock();
+
+        final Throwable exception = Assertions.catchThrowable(() -> blockMapperFactory.getMapper(tweetBlock));
+
+        //then
+        Assertions.assertThat(exception).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("No mapper found for article block TweetBlock");
+    }
+
+    class TweetBlock extends ArticleBlock {
+
     }
 
     private Image createImage(Long imageId) {

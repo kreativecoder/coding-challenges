@@ -17,7 +17,7 @@ public class ArticleBlockMapperFactory {
         return articleBlockMappers.stream()
                 .filter(blockMapper -> blockMapper.isMapper(articleBlock))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("No mapper found for article block " + articleBlock.getClass()));
+                .orElseThrow(() -> new IllegalArgumentException("No mapper found for article block " + articleBlock.getClass().getSimpleName()));
 
     }
 }
