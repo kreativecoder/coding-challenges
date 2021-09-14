@@ -11,21 +11,27 @@ import java.util.*;
 @Component
 public class ArticleRepository {
 
-    public List<Article> all(){
-        final List<Article> result = new ArrayList<>();
-        result.add(createDummyArticle(1001L));
-        result.add(createDummyArticle(2002L));
-        result.add(createDummyArticle(3003L));
-        result.add(createDummyArticle(4004L));
-        result.add(createDummyArticle(5005L));
-        return result;
+    List<Article> articles;
+
+    public ArticleRepository() {
+        articles = new ArrayList<>();
+
+        articles.add(createDummyArticle(1001L));
+        articles.add(createDummyArticle(2002L));
+        articles.add(createDummyArticle(3003L));
+        articles.add(createDummyArticle(4004L));
+        articles.add(createDummyArticle(5005L));
     }
 
-    public Article findBy(Long id){
-        return createDummyArticle(id);
+    public List<Article> all() {
+        return articles;
     }
 
-    public void create(Article article){
+    public Optional<Article> findBy(Long id) {
+        return articles.stream().filter(article -> id.equals(article.getId())).findFirst();
+    }
+
+    public void create(Article article) {
         //Ignore
     }
 
@@ -41,7 +47,7 @@ public class ArticleRepository {
         return result;
     }
 
-    private Set<ArticleBlock> createBlocks(Long articleId){
+    private Set<ArticleBlock> createBlocks(Long articleId) {
         final Set<ArticleBlock> result = new HashSet<>();
 
         final TextBlock textBlock = new TextBlock();
@@ -84,7 +90,7 @@ public class ArticleRepository {
         return result;
     }
 
-    private Image createImage(Long imageId){
+    private Image createImage(Long imageId) {
         final Image result = new Image();
         result.setId(imageId);
         result.setLastModified(new Date());

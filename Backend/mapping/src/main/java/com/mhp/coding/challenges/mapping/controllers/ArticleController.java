@@ -3,6 +3,7 @@ package com.mhp.coding.challenges.mapping.controllers;
 import com.mhp.coding.challenges.mapping.models.dto.ArticleDto;
 import com.mhp.coding.challenges.mapping.services.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,8 +25,10 @@ public class ArticleController {
     }
 
     @GetMapping("/{id}")
-    public ArticleDto details(@PathVariable Long id) {
-        return articleService.articleForId(id);
+    public ResponseEntity<ArticleDto> details(@PathVariable Long id) {
+        return articleService.articleForId(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping()
