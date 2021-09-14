@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -32,7 +33,7 @@ public class ArticleMapper {
         return articleDto;
     }
 
-    private Collection<ArticleBlockDto> mapBlocks(Set<ArticleBlock> blocks) {
+    private List<ArticleBlockDto> mapBlocks(Set<ArticleBlock> blocks) {
         return blocks.stream()
                 .sorted(Comparator.comparingInt(ArticleBlock::getSortIndex))
                 .map(articleBlock -> articleBlockMapperFactory.getMapper(articleBlock).map(articleBlock))

@@ -7,14 +7,14 @@ import java.util.List;
 
 @Component
 public class ArticleBlockMapperFactory {
-    private final List<BlockMapper> blockMappers;
+    private final List<ArticleBlockMapper> articleBlockMappers;
 
-    public ArticleBlockMapperFactory(List<BlockMapper> blockMappers) {
-        this.blockMappers = blockMappers;
+    public ArticleBlockMapperFactory(List<ArticleBlockMapper> articleBlockMappers) {
+        this.articleBlockMappers = articleBlockMappers;
     }
 
-    public BlockMapper getMapper(ArticleBlock articleBlock) {
-        return blockMappers.stream()
+    public ArticleBlockMapper getMapper(ArticleBlock articleBlock) {
+        return articleBlockMappers.stream()
                 .filter(blockMapper -> blockMapper.isMapper(articleBlock))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("No mapper found for article block " + articleBlock.getClass()));

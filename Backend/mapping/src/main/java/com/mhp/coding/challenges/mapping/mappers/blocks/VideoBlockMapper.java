@@ -5,7 +5,7 @@ import com.mhp.coding.challenges.mapping.models.db.blocks.VideoBlock;
 import org.springframework.stereotype.Component;
 
 @Component
-public class VideoBlockMapper implements BlockMapper<VideoBlock, com.mhp.coding.challenges.mapping.models.dto.blocks.VideoBlock> {
+public class VideoBlockMapper implements ArticleBlockMapper<VideoBlock, com.mhp.coding.challenges.mapping.models.dto.blocks.VideoBlock> {
 
     @Override
     public com.mhp.coding.challenges.mapping.models.dto.blocks.VideoBlock map(VideoBlock videoBlock) {

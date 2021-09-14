@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class GalleryBlockMapper implements BlockMapper<GalleryBlock, GalleryBlockDto> {
+public class GalleryBlockMapper implements ArticleBlockMapper<GalleryBlock, GalleryBlockDto> {
 
     private final ImageMapper imageMapper;
 
